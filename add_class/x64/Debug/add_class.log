@@ -1,0 +1,19 @@
+﻿  main.cpp
+C:\glfw-3.3.3\profe\mesh.hpp(60,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\glfw-3.3.3\profe\mesh.hpp(77,1): warning C4267: 'initializing': conversion from 'size_t' to 'u32', possible loss of data
+C:\glfw-3.3.3\profe\mesh.hpp(77,1): warning C4267: 'initializing': conversion from 'size_t' to 'const u32', possible loss of data
+C:\glfw-3.3.3\profe\mesh.hpp(78,1): warning C4267: 'initializing': conversion from 'size_t' to 'u32', possible loss of data
+C:\glfw-3.3.3\profe\mesh.hpp(78,1): warning C4267: 'initializing': conversion from 'size_t' to 'const u32', possible loss of data
+C:\glfw-3.3.3\profe\cam.hpp(31,1): warning C4305: 'initializing': truncation from 'double' to 'f32'
+C:\glfw-3.3.3\profe\cam.hpp(41,12): warning C4244: '=': conversion from 'f64' to 'f32', possible loss of data
+C:\glfw-3.3.3\profe\cam.hpp(42,12): warning C4244: '=': conversion from 'f64' to 'f32', possible loss of data
+C:\glfw-3.3.3\profe\cam.hpp(47,11): warning C4244: '=': conversion from 'f64' to 'f32', possible loss of data
+C:\glfw-3.3.3\profe\cam.hpp(48,11): warning C4244: '=': conversion from 'f64' to 'f32', possible loss of data
+C:\glfw-3.3.3\profe\cam.hpp(69,1): warning C4305: '=': truncation from 'double' to 'f32'
+C:\glfw-3.3.3\profe\cam.hpp(71,1): warning C4305: '=': truncation from 'double' to 'f32'
+C:\glfw-3.3.3\profe\cam.hpp(85,1): warning C4305: '=': truncation from 'double' to 'f32'
+C:\glfw-3.3.3\profe\cam.hpp(87,1): warning C4305: '=': truncation from 'double' to 'f32'
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(111,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(115,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(177,20): warning C4244: 'initializing': conversion from 'double' to 'f32', possible loss of data
+  add_class.vcxproj -> C:\Users\Sebastián\source\repos\colisiones\x64\Debug\add_class.exe
