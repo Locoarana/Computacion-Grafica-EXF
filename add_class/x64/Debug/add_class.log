@@ -13,7 +13,8 @@ C:\glfw-3.3.3\profe\cam.hpp(69,1): warning C4305: '=': truncation from 'double' 
 C:\glfw-3.3.3\profe\cam.hpp(71,1): warning C4305: '=': truncation from 'double' to 'f32'
 C:\glfw-3.3.3\profe\cam.hpp(85,1): warning C4305: '=': truncation from 'double' to 'f32'
 C:\glfw-3.3.3\profe\cam.hpp(87,1): warning C4305: '=': truncation from 'double' to 'f32'
-C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(111,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(115,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(177,20): warning C4244: 'initializing': conversion from 'double' to 'f32', possible loss of data
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(110,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(114,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Sebastián\source\repos\colisiones\add_class\main.cpp(161,20): warning C4244: 'initializing': conversion from 'double' to 'f32', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   add_class.vcxproj -> C:\Users\Sebastián\source\repos\colisiones\x64\Debug\add_class.exe

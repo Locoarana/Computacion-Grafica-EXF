@@ -4,7 +4,6 @@
 #include <vector>
 #include <stdlib.h> 
 #include<figures.h>
-#include<hitbox.h>
 
 const u32 FSIZE = sizeof(f32);
 const u32 ISIZE = sizeof(u32);
@@ -67,7 +66,7 @@ void processInput(GLFWwindow* window) {
 		}
 		else
 		{
-			if (base.x + deltaTime * 0.5 < 2.5f && estado == 0)
+			if (base.x + deltaTime * 0.5 < 2.5f)
 				base.x += deltaTime * 5;
 		}
 	}
@@ -109,29 +108,14 @@ i32 main() {
 	glm::vec3 dx(0.5f, -1.25f, -4.0f); 
 
 	srand(time(NULL));
-	int n = 3;
+	int n = 10;
 	int count = 0;
-	std::vector<glm::vec3> positions(n * (n-1));
+	std::vector<glm::vec3> positions(n);
 	for (u32 i = 0; i < n; ++i) {
-		positions[count] = glm::vec3(i - 1.0f, -1.00f, -11.0f);  //(i-n/2.0f, sin(i*j/50.0f), j-n/2.0f)
+		positions[count] = glm::vec3(i - 1.0f, -1.00f, -15.0f);  //(i-n/2.0f, sin(i*j/50.0f), j-n/2.0f)
 		count++;
 		
 	}
-
-	//roca
-	//auto rndb = [](f32 a, f32 b) -> f32 {
-	//	f32 d = b - a;
-	//	return (rand() % 1000) / 1000.0f * d + a;
-	//};
-	//
-	//posRock.x = rndb(1.0, n - 1.0);
-	//posRock.y = rndb(1.0, n - 1.0);
-	//
-	//u32 bx = rand() % 2;
-	//u32 by = rand() % 2;
-	//glm::vec3 velocidad = glm::vec3(rndb(0.02, 0.03), rndb(0.02, 0.03), -0.04f);
-	//if (bx) velocidad.x *= -1;
-	//if (by) velocidad.y *= -1;
 
 	u32 cubeVao, lightCubeVao, vbo, ebo;
 	glGenVertexArrays(1, &cubeVao);
@@ -198,11 +182,6 @@ i32 main() {
 		glm::mat4 model = glm::mat4(1.0f);
 		model = translate(model, posRock);  //base
 		if (bala == 1) { posRock.z -= deltaTime*2; }
-		//if (cambioy == 1) { dx.y += deltaTime; }
-		//if (cambioy == 0) { dx.y -= deltaTime; }
-		//if (dx.y > 1.80f) { cambioy = 0; }
-		//if (dx.y < -1.50f) { cambioy = 1; }
-		//std::cout << dx.x<<'\n';
 		model = scale(model, glm::vec3(0.05f));
 		shader->setMat4("model", model);
 		rock->Draw(shader);
@@ -213,6 +192,7 @@ i32 main() {
 		model = scale(model, glm::vec3(0.50f));
 		model = rotate(model, 30.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = rotate(model, 30.0f, glm::vec3(0.0f, 0.0f, 0.5f));
+		//model = scale(model, glm::vec3(0.50f));
 		shader->setMat4("model", model);
 		monito->Draw(shader);
 
@@ -233,14 +213,37 @@ i32 main() {
 			model = glm::translate(model, positions[i]);
 			bloques->setMat4("proj", proj);
 			bloques->setMat4("view", cam->getViewM4());
-			model = scale(model, glm::vec3(0.20f));
+			//model = scale(model, glm::vec3(0.20f));
 			bloques->setMat4("model", model);
 
-			if (abs(positions[i].x - posRock.x) < 0.45f && abs(positions[i].z - posRock.z) < 0.30f) {
+			//Colisiones
+			if ((abs(positions[i].x - posRock.x) < 0.45f && abs(positions[i].z - posRock.z) < 0.30f)) {
 				positions.erase(positions.begin() + i);
 				posRock = base + glm::vec3(0.30f, 0.15,0.0f);   //glm::vec3(0.80f, -1.10f, -4.0f);  //base: glm::vec3(0.5f, -1.25f, -4.0f);
 				bala = 0;
 				estado = 0;
+			}
+
+			else
+			{
+				if (posRock.z < -15.0f) {
+					posRock = base + glm::vec3(0.30f, 0.15, 0.0f);   //glm::vec3(0.80f, -1.10f, -4.0f);  //base: glm::vec3(0.5f, -1.25f, -4.0f);
+					bala = 0;
+					estado = 0;
+				}
+			}
+
+			//Se pierde
+
+			if (positions[i].z >= cam->pos.z) {
+				glfwSetWindowShouldClose(window, true);
+				std::cout << "Perdiste"<<'\n';
+			}
+
+			// Ganador
+			if (positions.empty()) {
+				glfwSetWindowShouldClose(window, true);
+				std::cout << "Ganaste" << '\n';
 			}
 
 			glDrawElements(GL_TRIANGLES, cubex->getISize(), GL_UNSIGNED_INT, 0);
